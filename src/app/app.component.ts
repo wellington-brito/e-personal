@@ -10,6 +10,9 @@ export class AppComponent implements OnInit {
   
   title = 'a-creative';
   showToolBar = true;
+  //acessar rotas e identificar rota atual
+  //se rota atual for igual a /login
+  //atribuir false pra var showToolbar
   userService: UserService = new UserService();
 
   ngOnInit() {    
