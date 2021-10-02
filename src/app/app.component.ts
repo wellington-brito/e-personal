@@ -14,7 +14,14 @@ import { CookieService} from 'ngx-cookie-service';
 export class AppComponent implements OnInit, OnDestroy {
   
   title = 'a-creative';
+<<<<<<< HEAD
   showToolBar;
+=======
+  showToolBar = true;
+  //acessar rotas e identificar rota atual
+  //se rota atual for igual a /login
+  //atribuir false pra var showToolbar
+>>>>>>> 73296e8da403485dad46f649d3a9dc36dfc99763
   userService: UserService = new UserService();
 
 
