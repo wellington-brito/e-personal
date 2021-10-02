@@ -4,10 +4,9 @@
 }
 
 .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
+    font-size: 32px;
+    font-family: Roboto;
+    text-align: justify;
 }
 
 .example-button-row {

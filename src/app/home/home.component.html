@@ -1,22 +1,17 @@
-<section>
-    <div class="example-label">
-        <mat-card class="example-card">
-            <section>
-                <div class="example-label">Projetos</div>
-                <div class="example-button-row">
-                    <button mat-raised-button>Ver</button>
-                </div>
-            </section>
-        </mat-card>
-    </div>
-    <div class="example-label">
-        <mat-card class="example-card">
-            <section>
-                <div class="example-label">Users</div>
-                <div class="example-button-row">
-                    <button mat-raised-button routerLink="/users">Ver</button>
-                </div>
-            </section>
-        </mat-card>
-    </div>
-</section>
+<div>
+    <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <h2 class="example-label">Inicio</h2>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <mat-card class="example-card">
+                <section>
+                    <div class="example-label">Projetos</div>
+                    <div class="example-button-row">
+                        <button mat-raised-button>Ver</button>
+                    </div>
+                </section>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

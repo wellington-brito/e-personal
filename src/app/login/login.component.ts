@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
-import { User } from '../users/user.model';
+import { AuthService } from '../services/auth.service';
+import { AuthGuardService } from '../services/auth-guard.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -11,21 +13,31 @@ import { NgForm } from '@angular/forms';
 
 export class LoginComponent {
 
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
-  authservice: AuthService = new AuthService();
-  user: User;
+  aparece = false;
+  username = "";
+  user: User = {nome: '', senha: '', cpf: '', email: '', perfil: '', role: '', token: ''};
 
-  constructor() { }
+  constructor(private router: Router, private auth: AuthGuardService, public authService: AuthService) { }
 
   ngOnInit() { }
 
-  onClickLogin(f: NgForm){
-    console.log(f);  // { first: '', last: '' }
-    console.log('entrou aqui');
-    //console.log(f.valid);  // false
+  /**
+   * @login função para acessar o service de autenticação para fazer login.
+   */
+  login(f: NgForm) { 
+    let user = { 
+      nome:  f.controls.nome.value,
+      senha: f.controls.senha.value
+    }
+    this.aparece = this.authService.login(user); 
   }
 
+  /**
+   * @recarregarPagina função acessar o service de autenticação para recarregar a página após fazer login.
+   */
+  recarregarPagina(): void { 
+    this.authService.recarregarPagina(); 
+  }
+  
 
 }

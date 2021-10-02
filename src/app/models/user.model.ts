@@ -1,10 +1,12 @@
 //representa o usuário
-export interface User {
+export class User {
     nome: string;
     senha: string;
     cpf: string;
     email: string;
     perfil: string;
+    role: string;
+    token?: string;
 }
 
 /*export interface ResponseUsers {

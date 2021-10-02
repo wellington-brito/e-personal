@@ -19,8 +19,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add the imports!
- 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { MatListModule } from '@angular/material/list';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from './users/user.service';
+import { AuthService } from './services/auth.service';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -45,9 +49,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add th
     MatInputModule,
     MatGridListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule,
+    
   ],
-  providers: [],
+  providers: [CookieService, UserService, AuthService,   { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
