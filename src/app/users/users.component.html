@@ -1,44 +1,24 @@
 <div>
     <mat-grid-list cols="4" rowHeight="100px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
             <h2>Users</h2>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
 
 <mat-card class="example-card mat-elevation-z8">
-    <div class="example-table">
-        <table mat-table [dataSource]="dataSource">
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="cpf">
-                <th mat-header-cell *matHeaderCellDef> cpf </th>
-                <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="nome">
-                <th mat-header-cell *matHeaderCellDef> nome </th>
-                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef> email </th>
-                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="perfil">
-                <th mat-header-cell *matHeaderCellDef> perfil </th>
-                <td mat-cell *matCellDef="let element"> {{element.perfil}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-        <mat-paginator class="ex-table" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
-        </mat-paginator>
+    <div>
+        <p> Selected Users: {{itens.selectedOptions.selected.length}}</p>
+        <button mat-icon-button color="accent" routerLink="/editUser"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="delete(itens.selectedOptions.selected)"><mat-icon>delete</mat-icon></button>
     </div>
+
+</mat-card>
+
+<mat-card class="example-card mat-elevation-z8">
+    <mat-selection-list #itens>
+        <mat-list-option *ngFor="let user of users" [value]="user">
+            {{user.nome}}
+        </mat-list-option>
+    </mat-selection-list>
 </mat-card>

@@ -22,17 +22,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { MatListModule } from '@angular/material/list';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from './users/user.service';
+import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { HeaderComponent } from './header/header.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     UsersComponent,
-    LoginComponent
-  ],
+    LoginComponent,
+      HeaderComponent,
+      FormComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

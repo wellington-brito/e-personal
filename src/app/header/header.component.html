@@ -1,0 +1,22 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar *ngIf="authService.isLoggedIn" color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name">EPersonal</h1>
+        <span class="example-spacer"></span>
+        <button *ngIf="authService.isLoggedIn" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list *ngIf="authService.isLoggedIn">
+                <a mat-list-item routerLink="{{nav.path}}" *ngFor="let nav of fillerNav">{{nav.item}}</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

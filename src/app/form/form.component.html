@@ -1,0 +1,56 @@
+<div>
+    <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <h2>Editar</h2>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<mat-card class="example-card mat-elevation-z8">
+    <div class="example-container">
+        <form [formGroup]="options">
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.Nome">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Nome">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.Senha">
+                    <mat-label>Senha</mat-label>
+                    <input matInput placeholder="Senha">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.cpf">
+                    <mat-label>cpf</mat-label>
+                    <input matInput placeholder="cpf">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.email">
+                    <mat-label>email</mat-label>
+                    <input matInput placeholder="email">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.perfil">
+                    <mat-label>perfil</mat-label>
+                    <input matInput placeholder="perfil">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.role">
+                    <mat-label>role</mat-label>
+                    <input matInput placeholder="role">
+                </mat-form-field>
+            </div>
+
+            <br><br>
+
+
+            <button mat-icon-button color="accent" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+            <button mat-icon-button color="primary" (click)="save()"><mat-icon>done</mat-icon></button>
+        </form>
+    </div>
+</mat-card>

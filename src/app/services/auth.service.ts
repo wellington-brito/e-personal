@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router,  } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../models/user.model';
-import { UserService } from '../users/user.service';
+import { UserService } from '../services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -70,7 +70,7 @@ export class AuthService {
    * @isLoggedIn função que retorna verdadeiro ou falso para identificar se o usuário foi autenticado.
    */
   get isLoggedIn(): boolean {
-      return localStorage.getItem('userHash') !== '';
+      return localStorage.getItem('userHash') !== null;
   }
 
   /**

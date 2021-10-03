@@ -1,32 +1,31 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import { UserService } from '../users/user.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit, AfterViewInit {
+export class UsersComponent implements OnInit {
   
   displayedColumns: string[] = ['cpf', 'nome', 'email', 'perfil'];
-  userService: UserService = new UserService();
-  users: User[]; 
-  dataSource: { paginator: MatPaginator; };
   
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  constructor() { }
+  users: User[]; 
+  constructor( private userService: UserService, private router: Router) { }
 
   ngOnInit() {    
      this.users = this.userService.getAll();   
-     this.dataSource = new MatTableDataSource<User>(this.users);  
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  delete( users ){
 
+    users.forEach(element => {
+      this.userService.delete(element.value.nome);
+    });
+    window.location.reload();
+    //this.router.navigate(["/users"])
+    
+   }
 }

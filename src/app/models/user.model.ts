@@ -8,11 +8,3 @@ export class User {
     role: string;
     token?: string;
 }
-
-/*export interface ResponseUsers {
-    page: number;
-    per_page: number;
-    total: number;
-    total_page: number;
-    data: User[];
-}*/

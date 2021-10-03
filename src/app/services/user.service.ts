@@ -25,7 +25,7 @@ export class UserService {
     constructor() { }
     
     setUser(){
-        localStorage.setItem( "usersArray", JSON.stringify( this.users ));
+        localStorage.setItem( "usersArray", JSON.stringify( this.users ) );
     }    
 
     getUser( key ){
@@ -36,8 +36,24 @@ export class UserService {
     }
 
     getAll( ){
-        let users = JSON.parse(localStorage.getItem("usersArray"));        
+        let users = JSON.parse( localStorage.getItem("usersArray") );        
         return users;        
+    }
+
+    delete( key ){
+
+        let users = this.getAll();
+        let userLogged = localStorage.getItem("username"); 
+        
+        for (let index = 0; index < users.length; index++) {
+            if (users[index].nome === key && userLogged !== key) {
+                users.splice(index, 1);    
+            }            
+        }                    
+
+         localStorage.removeItem( "usersArray" );
+         localStorage.setItem( "usersArray", JSON.stringify( users ) );  
+              
     }
     
 }
